@@ -7,7 +7,7 @@ import Database from "@ioc:Adonis/Lucid/Database";
 
 export default class UserRegisterController {
   public async store({ request }: HttpContextContract) {
-    // transdaction: desfazer todo o processo caso alguma operacao falhe
+    // transaction: desfazer todo o processo caso alguma operacao falhe
     await Database.transaction(async (trx) => {
       const { email, redirectUrl } = await request.validate(StoreValidator);
 
