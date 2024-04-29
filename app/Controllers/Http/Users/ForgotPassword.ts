@@ -28,7 +28,28 @@ export default class ForgotPasswordsController {
     });
   }
 
-  public async show({}: HttpContextContract) {}
+  public async show({ params }: HttpContextContract) {
+    const userKey = await UserKey.findByOrFail("key", params.key);
+    const user = await userKey.related("user").query().firstOrFail();
 
-  public async update({}: HttpContextContract) {}
+    return user;
+  }
+
+  public async update({ request, response }: HttpContextContract) {
+    const { key, password } = await request.validate(UpdateValidator);
+
+    const userKey = await UserKey.findByOrFail("key", key);
+
+    const user = await userKey.related("user").query().firstOrFail();
+
+    user.merge({
+      password,
+    });
+
+    await user.save();
+
+    await userKey.delete();
+
+    return response.ok({ message: "Senha atualizada com sucesso!" });
+  }
 }

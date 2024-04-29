@@ -8,7 +8,6 @@ export default class UpdateValidator {
     key: schema.string({ trim: true }, [
       rules.exists({ table: "user_keys", column: "key" }),
     ]),
-    name: schema.string({ trim: true }),
     password: schema.string({ trim: true }, [
       rules.confirmed("passwordConfirmation"),
     ]),
@@ -16,5 +15,8 @@ export default class UpdateValidator {
 
   public cacheKey = this.ctx.routeKey;
 
-  public messages = {};
+  public messages = {
+    "key.exists": "Chave inválida.",
+    "passwordConfirmation.confirmed": "As senhas não coincidem.",
+  };
 }
