@@ -6,8 +6,10 @@ import {
   BaseModel,
   hasMany,
   HasMany,
+  hasOne,
+  HasOne,
 } from "@ioc:Adonis/Lucid/Orm";
-import { UserKey } from ".";
+import { UserKey, File } from ".";
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -43,4 +45,10 @@ export default class User extends BaseModel {
 
   @hasMany(() => UserKey)
   public keys: HasMany<typeof UserKey>;
+
+  @hasOne(() => File, {
+    foreignKey: "ownerId",
+    onQuery: (query) => query.where("fileCategory", "avatar"),
+  })
+  public avatar: HasOne<typeof File>;
 }
