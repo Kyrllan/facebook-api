@@ -4,7 +4,7 @@ import {
   UpdateValidator,
 } from "App/Validators/User/ForgotPassword";
 import { User, UserKey } from "App/Models";
-import faker from "faker";
+import faker from "@faker-js/faker";
 import Mail from "@ioc:Adonis/Addons/Mail";
 
 export default class ForgotPasswordsController {
@@ -30,9 +30,10 @@ export default class ForgotPasswordsController {
 
   public async show({ params }: HttpContextContract) {
     const userKey = await UserKey.findByOrFail("key", params.key);
-    const user = await userKey.related("user").query().firstOrFail();
 
-    return user;
+    await userKey.load("user");
+
+    return userKey.user;
   }
 
   public async update({ request, response }: HttpContextContract) {
