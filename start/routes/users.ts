@@ -12,3 +12,4 @@ Route.get("/users/forgot-password/:key", "Users/ForgotPassword.show");
 Route.put("/users/forgot-password", "Users/ForgotPassword.update");
 
 Route.put("/users/avatar", "Users/Avatar.update").middleware("auth");
+Route.delete("/users/avatar", "Users/Avatar.destroy").middleware("auth");
