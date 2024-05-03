@@ -9,7 +9,8 @@ export default class SearchController {
       const users = await User.query()
         .where("name", "LIKE", `%${keyword}%`)
         .orWhere("username", "LIKE", `%${keyword}%`)
-        .orWhere("email", "LIKE", `%${keyword}%`);
+        .orWhere("email", "LIKE", `%${keyword}%`)
+        .preload("avatar");
 
       return response.ok({ users });
     } catch (error) {
