@@ -20,6 +20,9 @@ export default class Post extends BaseModel {
   public updatedAt: DateTime;
 
   @column()
+  public userId: number;
+
+  @column()
   public description: string;
 
   @belongsTo(() => User)
