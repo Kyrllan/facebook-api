@@ -12,6 +12,7 @@ export default class PostsController {
 
     await user.load("posts", (query) => {
       query.orderBy("created_at", "desc");
+      query.preload("media");
       query.preload("user", (query) => {
         query.select(["id", "name", "username"]);
         query.preload("avatar");
