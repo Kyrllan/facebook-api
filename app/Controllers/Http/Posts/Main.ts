@@ -11,6 +11,7 @@ export default class PostsController {
     const user = (await User.findBy("username", username)) || auth.user!;
 
     await user.load("posts", (query) => {
+      query.orderBy("created_at", "desc");
       query.preload("user", (query) => {
         query.select(["id", "name", "username"]);
         query.preload("avatar");
