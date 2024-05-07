@@ -13,5 +13,9 @@ export default class StoreValidator {
 
   public cacheKey = this.ctx.routeKey;
 
-  public messages: CustomMessages = {};
+  public messages: CustomMessages = {
+    "file.size": "Tamanho inválido.",
+    "file.extnames":
+      "Extensão inválida. (Extensões permitidas: jpg, png, jpeg, mp4, mov)",
+  };
 }
