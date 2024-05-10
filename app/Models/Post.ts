@@ -42,6 +42,6 @@ export default class Post extends BaseModel {
 
   @computed()
   public get commentsCount() {
-    return this.$extras.commentsCount;
+    return this.$extras.comments_count;
   }
 }

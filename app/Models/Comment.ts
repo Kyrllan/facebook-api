@@ -9,10 +9,10 @@ export default class Comment extends BaseModel {
   @column()
   public content: string;
 
-  @column()
+  @column({ serializeAs: null })
   public userId: number;
 
-  @column()
+  @column({ serializeAs: null })
   public postId: number;
 
   @column.dateTime({ autoCreate: true })
