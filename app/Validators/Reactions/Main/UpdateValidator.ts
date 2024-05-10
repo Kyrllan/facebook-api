@@ -10,5 +10,9 @@ export default class UpdateValidator {
     postId: schema.number([rules.exists({ table: "posts", column: "id" })]),
   });
 
-  public messages: CustomMessages = {};
+  public messages: CustomMessages = {
+    "type.required": "Reaction obrigatório",
+    "type.enum": "Reaction inválida",
+    "postId.required": "Post id é obrigatório",
+  };
 }
