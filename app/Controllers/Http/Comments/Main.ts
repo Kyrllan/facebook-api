@@ -1,5 +1,5 @@
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
-import { StoreValidator, UpdateValidator } from "App/Validators/Comments";
+import { StoreValidator, UpdateValidator } from "App/Validators/Comments/Main";
 import { Post, Comment } from "App/Models";
 
 export default class CommentsController {
