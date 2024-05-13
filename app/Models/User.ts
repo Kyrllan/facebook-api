@@ -10,6 +10,7 @@ import {
   HasOne,
   manyToMany,
   ManyToMany,
+  computed,
 } from "@ioc:Adonis/Lucid/Orm";
 import { UserKey, File, Post, Comment } from ".";
 
@@ -73,4 +74,24 @@ export default class User extends BaseModel {
     pivotRelatedForeignKey: "follower_id",
   })
   public followers: ManyToMany<typeof User>;
+
+  @computed()
+  public get postsCount() {
+    return this.$extras.posts_count;
+  }
+
+  @computed()
+  public get followersCount() {
+    return this.$extras.followers_count;
+  }
+
+  @computed()
+  public get followsCount() {
+    return this.$extras.follows_count;
+  }
+
+  @computed()
+  public get isFollowing() {
+    return this.$extras.isFollowing;
+  }
 }
