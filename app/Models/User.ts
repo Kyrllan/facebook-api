@@ -8,6 +8,8 @@ import {
   HasMany,
   hasOne,
   HasOne,
+  manyToMany,
+  ManyToMany,
 } from "@ioc:Adonis/Lucid/Orm";
 import { UserKey, File, Post, Comment } from ".";
 
@@ -57,4 +59,18 @@ export default class User extends BaseModel {
 
   @hasMany(() => Comment)
   public comments: HasMany<typeof Comment>;
+
+  @manyToMany(() => User, {
+    pivotTable: "follows",
+    pivotForeignKey: "follower_id",
+    pivotRelatedForeignKey: "followed_id",
+  })
+  public follows: ManyToMany<typeof User>;
+
+  @manyToMany(() => User, {
+    pivotTable: "follows",
+    pivotForeignKey: "followed_id",
+    pivotRelatedForeignKey: "follower_id",
+  })
+  public followers: ManyToMany<typeof User>;
 }
