@@ -5,7 +5,15 @@ export default class FollowersController {
   public async index({ request }: HttpContextContract) {
     const { username } = request.qs();
     const user = await User.findByOrFail("username", username);
-    const followers = await user.related("followers").query().preload("avatar");
-    return followers;
+
+    await user.load("followers");
+
+    return user.followers;
+  }
+
+  public async destroy({ params, auth }: HttpContextContract) {
+    const user = auth.user!;
+
+    await user.related("followers").detach([params.id]);
   }
 }
