@@ -1,6 +1,6 @@
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import { User } from "App/Models";
-import Database from "@ioc:Adonis/Lucid/Database";
+import { isFollowing } from "App/Utils/isFollowing";
 
 export default class MainController {
   public async show({ request, auth }: HttpContextContract) {
@@ -15,12 +15,7 @@ export default class MainController {
       .firstOrFail();
 
     if (user.id !== auth.user?.id) {
-      const isFollowing = await Database.query()
-        .from("follows")
-        .where("follower_id", auth.user!.id)
-        .first();
-
-      user.$extras.isFollowing = isFollowing ? true : false;
+      await isFollowing(user, auth);
     }
 
     return user.serialize({

@@ -7,6 +7,7 @@ import "./comments";
 import "./reactions";
 import "./follows";
 import "./profiles";
+import "./followers";
 
 Route.get("/user-register", async ({ view }) => {
   return view.render("emails/register");
