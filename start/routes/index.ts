@@ -11,7 +11,7 @@ import "./messages";
 import "./conversations";
 
 Route.get("/user-register", async ({ view }) => {
-  return view.render("emails/register");
+  return view.render("emails/verify-email");
 });
 
 Route.on("/chat").render("chat");
