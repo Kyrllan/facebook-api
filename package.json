@@ -16,11 +16,13 @@
     "@types/proxy-addr": "^2.0.3",
     "@types/socket.io": "^3.0.2",
     "@types/source-map-support": "^0.5.10",
+    "@types/supertest": "^6.0.2",
     "adonis-preset-ts": "^2.1.0",
     "execa": "^9.1.0",
     "get-port": "^7.1.0",
     "japa": "^4.0.0",
     "pino-pretty": "^11.0.0",
+    "supertest": "^7.0.0",
     "typescript": "~4.6",
     "youch": "^3.3.3",
     "youch-terminal": "^2.2.3"

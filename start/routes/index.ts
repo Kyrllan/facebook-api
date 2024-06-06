@@ -14,4 +14,10 @@ Route.get("/user-register", async ({ view }) => {
   return view.render("emails/verify-email");
 });
 
+Route.get("/", async () => {
+  return {
+    hello: "world",
+  };
+});
+
 Route.on("/chat").render("chat");
