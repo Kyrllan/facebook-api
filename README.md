@@ -1,10 +1,10 @@
 # Projeto Adonis.js com Docker
 
-Este projeto é uma API construída em Adonis.js, configurada para rodar com Docker e Docker Compose. Siga os passos abaixo para configurar e rodar a aplicação na sua máquina local.
+Backend de uma rede social simulando o Facebook, desenvolvido com AdonisJS e PostgreSQL. A API inclui funcionalidades como cadastro de usuários, autenticação, seguir/deixar de seguir, postagens, curtidas e comentários. Além disso, oferece chat em tempo real via WebSockets. O projeto utiliza Docker para simplificar a configuração do ambiente de desenvolvimento.
 
 ## Pré-requisitos
 
-Antes de começar, certifique-se de que você tenha o Docker e o Docker Compose instalados na sua máquina. Se não estiverem instalados, siga as instruções da [documentação oficial do Docker](https://docs.docker.com/get-docker/).
+Antes de começar, certifique-se de que você tenha o Node (v20.10.0) Docker e o Docker Compose instalados na sua máquina. Se não estiverem instalados, siga as instruções da [documentação oficial do Docker](https://docs.docker.com/get-docker/).
 
 ## Passo a Passo para Configuração
 
